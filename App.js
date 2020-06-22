@@ -1,19 +1,73 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component , useEffect} from "react";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+import { NavigationContainer} from "@react-navigation/native";
+import { View , Text, Button} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+import {createStackNavigator} from "@react-navigation/stack";
+import { signIn} from './screens/signIn';
+import {login} from './screens/login';
+import {home} from './screens/home';
+import {home1} from './screens/home1';
+import {otp} from './screens/otp';
+
+import {login1} from './screens/login1';
+import {AuthContext} from './context'
+
+const authStack = createStackNavigator();
+//const Drawer = createDrawerNavigator();
+
+export default class App extends Component {
+  
+  constructor(){
+    super();
+    this.state = { jwtToken: false };
+    // this.state = { userRole: false };
+
+  }
+  componentDidMount() {
+    AsyncStorage.getItem('jwtToken').then((token) => {
+      this.setState({ jwtToken: token !== null })
+      console.log("jwtToken  "+this.state.jwtToken)
+      
+    })
+  }
+  
+  // componentDidMount() {
+  //   // AsyncStorage.getItem('jwtToken').then((token) => {
+  //   //   this.setState({ jwtToken: token !== null })
+  //     AsyncStorage.getItem('userRole').then((role) => {
+  //       this.setState({ userRole: role !== null })
+  //     // console.log(this.state.jwtToken)
+  //     console.log("role  "+this.state.userRole)
+  //   })
+  // }
+   
+  
+  
+
+render() {
+    return (
+<NavigationContainer> 
+<authStack.Navigator>
+{ this.state.jwtToken !== false ? (
+  <authStack.Screen name = "home" component = {home} />
+
+      )
+    :
+    <authStack.Screen name = "login" component = {login} options={{headerShown:false}}/>
+    
+
+
+    }
+     <authStack.Screen name = "login1" component = {login1}/>
+     <authStack.Screen name = "signIn" component = {signIn}/>
+     <authStack.Screen name = "home1" component = {home1}/>
+     <authStack.Screen name = "otp" component = {otp} options={{headerShown:false}}/>
+
+
+ 
+</authStack.Navigator>
+</NavigationContainer>
+    );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+}
