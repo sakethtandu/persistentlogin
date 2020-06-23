@@ -5,6 +5,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { signIn} from './signIn';
 import { home1} from './home1';
 import { login} from './login';
+// import MainTabScreen from './MainTabScreen';
+import HomeScreen from './HomeScreen';
+
 
 export class otp extends React.Component {
   

@@ -4,6 +4,7 @@ import { ScreenContainer } from 'react-native-screens';
 // import { signIn} from './signIn';
 import { AuthContext } from '../context';
 import AsyncStorage from '@react-native-community/async-storage';
+import {login} from './login';
 
 export const home = ({navigation}) => {
   signOut = async() => {
@@ -22,7 +23,7 @@ export const home = ({navigation}) => {
     <Text>Home</Text>
 
     <Button title = "Home Button" onPress={() => {navigation.navigate('signIn')}} />
-    <Button title = "SignOut Button" onPress={() => {signOut(); navigation.navigate('login1')}} />
+    <Button title = "SignOut Button" onPress={() => {signOut(); navigation.navigate('login')}} />
 
 
 </ScreenContainer>

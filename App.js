@@ -13,7 +13,7 @@ import MainTabScreen from './screens/MainTabScreen';
 import SupportScreen from './screens/SupportScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import BookmarkScreen from './screens/BookmarkScreen';
-
+import SplashScreen from './screens/SplashScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import RootStackScreen from './screens/RootStackScreen';
 
@@ -73,10 +73,11 @@ render() {
       )
     :
     <authStack.Navigator>
-          <Drawer.Screen name="login" component={login} />
-          <Drawer.Screen name="login1" component={login1} />
-          <Drawer.Screen name="home1" component={home1} />
-          <Drawer.Screen name="otp" component={otp} />
+         <authStack.Screen name="SplashScreen" component={SplashScreen} options={{headerShown:false}}/>
+          <authStack.Screen name="login" component={login} options={{headerShown:false}} />
+          <authStack.Screen name="login1" component={login1} />
+          <authStack.Screen name="home1" component={home1} />
+          <authStack.Screen name="otp" component={otp} options={{headerShown:false}}/>
         </authStack.Navigator>
 }
     </NavigationContainer>
