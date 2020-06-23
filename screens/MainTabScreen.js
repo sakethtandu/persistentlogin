@@ -25,7 +25,7 @@ const MainTabScreen = () => (
         component={HomeStackScreen}
         options={{
           tabBarLabel: 'Home',
-          tabBarColor: '#009387',
+          tabBarColor: '#003f5c',
           tabBarIcon: ({ color }) => (
             <Icon name="ios-home" color={color} size={26} />
           ),
@@ -73,6 +73,8 @@ const HomeStackScreen = ({navigation}) => (
 <HomeStack.Navigator screenOptions={{
         headerStyle: {
         backgroundColor: '#003f5c',
+        elevation: 0,
+        
         },
         headerTintColor: '#fff',
         headerTitleStyle: {

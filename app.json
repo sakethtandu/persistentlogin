@@ -11,7 +11,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/Webp.net-resizeimag.jpg",
+      "image": "./assets/Webp.net-resizeimage.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },

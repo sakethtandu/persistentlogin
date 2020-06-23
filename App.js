@@ -16,6 +16,7 @@ import BookmarkScreen from './screens/BookmarkScreen';
 import SplashScreen from './screens/SplashScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import RootStackScreen from './screens/RootStackScreen';
+import moneyGenerated from './screens/moneyGenerated';
 
 import { 
   Provider as PaperProvider, 
@@ -67,7 +68,7 @@ render() {
           <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
           <Drawer.Screen name="Sign In" component={signIn} />
           <Drawer.Screen name="Home" component={home} />
-          <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
+          <Drawer.Screen name="moneyGenerated" component={moneyGenerated} />
           <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} />
         </Drawer.Navigator>
       )
