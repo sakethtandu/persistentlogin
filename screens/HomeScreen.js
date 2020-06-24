@@ -12,7 +12,7 @@ const HomeScreen = ({navigation}) => {
     return (
       <ScrollView>
       <View style={{ flex:1, backgroundColor: 'powderblue'}}>
-      <Card  ><Image   style={{ width: 300, height: 150 , padding:10,}} source={require('../assets/Webp.net-resizeimage.png')} /></Card> 
+      <Card  ><Image   style={{ width: 300, height: 150 , padding:50,}} source={require('../assets/Webp.net-resizeimage.png')} /></Card> 
   
       </View>
     <View style={{flex: 1,  width: 300, height: 150 }}>

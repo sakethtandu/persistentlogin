@@ -44,7 +44,7 @@ export class otp extends React.Component {
           // this.storeData(userRole)
           console.log(res);
        
-          this.props.navigation.navigate('home1',res );
+          this.props.navigation.navigate('home1',{screen: 'signIn'},res );
         }
       })
 

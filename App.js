@@ -34,9 +34,26 @@ export default class App extends Component {
   constructor(){
     super();
     this.state = { jwtToken: false };
-    // this.state = { userRole: false };
+    global.jwtToken =  this.getData().then(value => global.token =value)
+      }
+      
+		 getData = async () => {
+			try {
+			  const value = await AsyncStorage.getItem('jwtToken')
+			  if(value !== null) {
+				console.log("getData in App is called " + value)
+				return value
+				// value previously stored
+			  }
+			  else{
+				  console.log('value is null')
+			  }
+			} catch(e) {
+			  // error reading value
+			}
+		  }
 
-  }
+  
   componentDidMount() {
     AsyncStorage.getItem('jwtToken').then((token) => {
       this.setState({ jwtToken: token !== null })
@@ -45,20 +62,6 @@ export default class App extends Component {
     })
   }
   
-  // componentDidMount() {
-  //   // AsyncStorage.getItem('jwtToken').then((token) => {
-  //   //   this.setState({ jwtToken: token !== null })
-  //     AsyncStorage.getItem('userRole').then((role) => {
-  //       this.setState({ userRole: role !== null })
-  //     // console.log(this.state.jwtToken)
-  //     console.log("role  "+this.state.userRole)
-  //   })
-  // }
-   
-  
- 
-
-
 render() {
     return (
       <PaperProvider>
@@ -70,11 +73,11 @@ render() {
           <Drawer.Screen name="Home" component={home} />
           <Drawer.Screen name="moneyGenerated" component={moneyGenerated} />
           <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} />
+          <Drawer.Screen name="login" component={login} options={{headerShown:false}} />
         </Drawer.Navigator>
       )
     :
     <authStack.Navigator>
-         <authStack.Screen name="SplashScreen" component={SplashScreen} options={{headerShown:false}}/>
           <authStack.Screen name="login" component={login} options={{headerShown:false}} />
           <authStack.Screen name="login1" component={login1} />
           <authStack.Screen name="home1" component={home1} />

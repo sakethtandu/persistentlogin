@@ -21,7 +21,7 @@ export const home = ({navigation}) => {
 <ScreenContainer>
 
     <Text>Home</Text>
-    moneyGenerated
+    
     <Button title = "Home Button" onPress={() => {navigation.navigate('signIn')}} />
     <Button title = "SignOut Button" onPress={() => {signOut(); navigation.navigate('login')}} />
 
