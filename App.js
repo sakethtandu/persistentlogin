@@ -61,11 +61,13 @@ export default class App extends Component {
       
     })
   }
+
+  
   
 render() {
     return (
       <PaperProvider>
-    <NavigationContainer>
+    <NavigationContainer value = {AuthContext}>
       {   this.state.jwtToken !== false ? (
         <Drawer.Navigator>
           <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
