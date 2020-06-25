@@ -9,6 +9,7 @@ import HomeScreen from './HomeScreen';
 import DetailsScreen from './DetailsScreen';
 import ExploreScreen from './ExploreScreen';
 import ProfileScreen from './ProfileScreen';
+import addTeacher from './addTeacher';
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
@@ -56,6 +57,17 @@ const MainTabScreen = () => (
       <Tab.Screen
         name="Explore"
         component={ExploreScreen}
+        options={{
+          tabBarLabel: 'Explore',
+          tabBarColor: '#d02860',
+          tabBarIcon: ({ color }) => (
+            <Icon name="ios-aperture" color={color} size={26} />
+          ),
+        }}
+      />
+       <Tab.Screen
+        name="Add Staff"
+        component={addTeacher}
         options={{
           tabBarLabel: 'Explore',
           tabBarColor: '#d02860',

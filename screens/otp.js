@@ -36,8 +36,8 @@ export class otp extends React.Component {
       .then((responseJson) => {
         var res = responseJson
         var token = res.data.jwString
-        var userRole = res.userRole
         if (res.status == 200) {
+          
           this.setState = { isLoading: false, }
 
           this.storeData(token)
@@ -79,15 +79,10 @@ export class otp extends React.Component {
           />
 
         </View>
-    {/* <Text>Login</Text> */}
     <TouchableOpacity onPress={() =>{ this.getDataUsingGet() }}  style={styles.loginBtn}>
     <Text style={styles.loginText}>Login</Text>
         </TouchableOpacity>
         </View >
-
-
-    {/* <Button title = "Store Token Button" onPress={() => {storeData(); navigation.navigate('home1')}} /> */}
-
 </ScreenContainer>
       
 );
