@@ -12,14 +12,15 @@ const HomeScreen = ({navigation}) => {
     return (
       <ScrollView>
       <View style={{ flex:1, backgroundColor: 'powderblue'}}>
-      <Card  ><Image   style={{ width: 300, height: 150 , padding:50,}} source={require('../assets/Webp.net-resizeimage.png')} /></Card> 
+      <Text style= {{justifyContent:"center"}}>Saketh </Text><Image   style={{ width: 300, height: 150 , marginLeft: 50 , marginBottom:10,}} source={require('../assets/Webp.net-resizeimage.png')} />
   
       </View>
     <View style={{flex: 1,  width: 300, height: 150 }}>
     </View>
     <View>
         {/* <Card style={styles.card1}><Text style={{justifyContent:"center"}}>hii</Text></Card> */}
-  <Card  ><Image   style={{ width: 300, height: 150 }} source={require('../assets/Webp.net-resizeimage.png')} /></Card> 
+  <Text style={{textAlign:'center'}}>Saketh </Text><Image   style={{ width: 300, height: 150 , marginLeft: 50 , marginRight: 10}} source={require('../assets/Webp.net-resizeimage.png')} />
+  <Card  ><Text style= {{justifyContent:"center"}}>Saketh </Text><Image   style={{ width: 300, height: 150 }} source={require('../assets/Webp.net-resizeimage.png')} /></Card> 
   <Card  ><Image   style={{ width: 300, height: 150 }} source={require('../assets/Webp.net-resizeimage.png')} /></Card> 
   <Card  ><Image   style={{ width: 300, height: 150 }} source={require('../assets/Webp.net-resizeimage.png')} /></Card> 
   <Card  ><Image   style={{ width: 300, height: 150 }} source={require('../assets/Webp.net-resizeimage.png')} /></Card> 

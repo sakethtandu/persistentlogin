@@ -183,9 +183,8 @@ export function ReviewForm({navigation}) {
 }
 export default class App extends React.Component {
   getDataUsingPost() {
-console.log('hii')
    // var password = this.state.otp
-    var url = "http://ec2-52-12-91-65.us-west-2.compute.amazonaws.com:8080/swrmsdc/staff/createStaff/createdByStaff";
+    var url = "http://ec2-15-206-74-22.ap-south-1.compute.amazonaws.com:8080/swrmsdc/staff/createStaff/createdByStaff";
 //console.log(values);
   //  var user = this.props.navigation.getParam('userName')
     const requestBody = this.values;
@@ -232,7 +231,7 @@ console.log("response for add teacher"+res);
               <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Formik scrollable
         initialValues={{ firstName: '',lastName:'',createdBy:'',emailId:'',phoneNumber: '',location:'', address: '' ,
-      pincode:'',role:'',dob:'',comments:'',classTeacherFor:'',schoolDetails:{schoolId:'2'},department:''}}
+      pincode:'',role:'',dob:'',comments:'',classTeacherFor:'',schoolDetails:{schoolId:'1'},department:''}}
         // validationSchema={reviewSchema}
         onSubmit={(values, actions) => {
           actions.resetForm(); 
@@ -254,7 +253,7 @@ console.log("response for add teacher"+res);
                  'Accept': 'application/json',
                  'Content-Type': 'application/json',
                  'Authorization':s,
-                 'schoolId':2
+                 'schoolId':1,
                },
                body: JSON.stringify(requestBody)
                // },

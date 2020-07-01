@@ -13,15 +13,19 @@ export class login extends React.Component {
   //    const {navigate}=this.props.navigation;
   //    navigation.push('login');
   //  }
-
+isLoading = true;
   state = {
     email: '',
     otp: ""
   }
 
   getDataUsingGet() {
+  //   if (isLoading == true){
+  //   <ActivityIndicator size="large" color="#0000ff" />
+  // isLoading = false  
+  // }
     var emailId = this.state.email
-    var url = "http://ec2-52-12-91-65.us-west-2.compute.amazonaws.com:8080/swrmsdc/authentication/sendOTP?emailId=";
+    var url = "http://ec2-15-206-74-22.ap-south-1.compute.amazonaws.com:8080/swrmsdc/authentication/sendOTP?emailId=";
     var url2 = url.concat(emailId);
     fetch(url2, {
       method: 'GET',
@@ -49,7 +53,76 @@ export class login extends React.Component {
       });
 
   }
-
+  onButtonClick(){
+    //  const proxy = "https://cors-anywhere.herokuapp.com/"
+    var url = "https://api.binance.com/api/v3/order/test?";
+    var symbol = "symbol="+"LTCBTC"
+    var side="side="+"BUY"
+    var type="type="+"LIMIT"
+    var timeInForce="timeInForce="+"GTC"
+    var quantity="quantity="+"1"
+    var price="price="+"0.00235"
+    var recvWindow="recvWindow="+"60000"
+    var timestamp="timestamp="+"1593370680000"
+    var signature="signature="+"60acf71e6d7d6a3d0d175a466ea34b20ae6826641df45aa313a2206586922d64"
+    var uri = url.concat(symbol+'&' + side+'&'+type+'&'+timeInForce+'&'+quantity+'&'+price+'&'+recvWindow+'&'+timestamp+'&'+signature);
+    console.log("request body= "+uri)
+  var url2 = "https://api.binance.com/api/v3/order/test?symbol=LTCBTC&side=BUY&type=LIMIT&timeInForce=GTC&quantity=1&price=0.00235&recvWindow=60000&timestamp=1593370910000&signature=d2b0576099282c13c25f0c584d940771feb2e8a652b2cce9677e1dacd40edc86"
+    // var apiKey = "0zqKUnwLYVkf5PE6VsCHZskFdLcUXM2jxQROj0sIqtsvv0q2YhxcSsx3GlDh5SiL"
+   var head = 'X-MBX-APIKEY:0zqKUnwLYVkf5PE6VsCHZskFdLcUXM2jxQROj0sIqtsvv0q2YhxcSsx3GlDh5SiL'
+   
+    //   axios.post({url2},{
+    //   headers: {
+    //     head,
+    //   //  'X-MBX-APIKEY': '0zqKUnwLYVkf5PE6VsCHZskFdLcUXM2jxQROj0sIqtsvv0q2YhxcSsx3GlDh5SiL',
+    //   }
+    // })
+  
+    // .then(res => {
+    //   console.log(res);
+    //   console.log(res.data);
+    // })
+  // }
+  fetch(url2, {
+      method: 'POST',
+      // mode: 'CORS',
+  
+      // mode: "no-cors",
+     headers:{
+    //    head,
+      // 'Access-Control-Allow-Origin': '*',
+  
+      // 'Access-Control-Allow-Origin': 'http://localhost:3000/',
+      //  Authorization:
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+      // 'Access-Control-Allow-Headers': 'X-MBX-APIKEY:0zqKUnwLYVkf5PE6VsCHZskFdLcUXM2jxQROj0sIqtsvv0q2YhxcSsx3GlDh5SiL',
+      // 'Access-Control-Allow-Origin': 'same-origin',
+      // 'content-type':'application/json',
+      // Authorization:{
+   'X-MBX-APIKEY': '0zqKUnwLYVkf5PE6VsCHZskFdLcUXM2jxQROj0sIqtsvv0q2YhxcSsx3GlDh5SiL',
+      }
+    // }
+  //Request Type 
+    })
+      .then((response) => response.json())
+      //If response is in json then in success
+      .then((responseJson) => {
+  
+        alert(JSON.stringify(responseJson));
+        var res = responseJson
+        console.log(res)
+       
+      })
+  
+  
+      //If response is not in json then in error
+      .catch((error) => {
+        //Error 
+        alert(JSON.stringify(error));
+        console.error(error);
+      });
+  
+   }
   signOut = async() => {
     // setUserToken(null);
     // setIsLoading(false);

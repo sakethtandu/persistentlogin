@@ -17,7 +17,7 @@ export class otp extends React.Component {
 
   getDataUsingGet() {
     var password = this.state.otp
-    var url = "http://ec2-52-12-91-65.us-west-2.compute.amazonaws.com:8080/swrmsdc/authentication/verifyOTP";
+    var url = "http://ec2-15-206-74-22.ap-south-1.compute.amazonaws.com:8080/swrmsdc/authentication/verifyOTP";
     const {userName} = this.props.route.params
     var requestBody = { userName: userName, password: password }
 
