@@ -1,49 +1,74 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, ActivityIndicator } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 
-class staffList extends Component {
+import {
+  StyleSheet,
+  ActivityIndicator,
+  FlatList,
+  Text,
+  View,
+  Alert,
+  RefreshControl,
+} from 'react-native';
+
+export default class staffList extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      loading: false,
-      data: [],
-      error: null,
-    };
-
+    //True to show the loader
     this.arrayholder = [];
+
+    this.state = { refreshing: true };
+    //Running the getData Service for the first time
+    this.GetData();
+
+    
   }
 
-  componentDidMount() {
-    this.makeRemoteRequest();
-  }
-
-  makeRemoteRequest = () => {
+  GetData = () => {
+    //Service to get the data from the server to render
     const url = "http://ec2-15-206-74-22.ap-south-1.compute.amazonaws.com:8080/swrmsdc/staff/getAllStaffDetails";
-    this.setState({ loading: true });
 
-    fetch(url, {
-      method: 'GET',
-      //Request Type 
+    return fetch(url, {
       headers: {
-      'Authorization': "Bearer " + global.token,
-      'schoolId': '1',
-    }})
-      .then(res => res.json())
-      .then(res => {console.log(res),
+        'Authorization': "Bearer " + global.token,
+        'schoolId': '1',
+      }
+    })
+      .then(response => response.json())
+      .then(responseJson => {
+        console.log(responseJson)
         this.setState({
-          data: res.data,
-          error: res.error || null,
-          loading: false,
+          refreshing: false,
+          //Setting the data source for the list to render
+         
+          dataSource: responseJson.data
         });
-        this.arrayholder = res.data;
+        this.arrayholder = responseJson.data;
       })
+     
+
       .catch(error => {
-        this.setState({ error, loading: false });
+        console.error(error);
       });
   };
-
+  ListViewItemSeparator = () => {
+    return (
+      //returning the listview item saparator view
+      <View
+        style={{
+          height: 0.2,
+          width: '90%',
+          backgroundColor: '#808080',
+        }}
+      />
+    );
+  };
+  onRefresh() {
+    //Clear old data of the list
+    this.setState({ dataSource: [] });
+    //Call the Service to get the latest data
+    this.GetData();
+  }
   renderSeparator = () => {
     return (
       <View
@@ -69,7 +94,7 @@ class staffList extends Component {
       return itemData.indexOf(textData) > -1;
     });
     this.setState({
-      data: newData,
+      dataSource: newData,
     });
   };
 
@@ -85,7 +110,6 @@ class staffList extends Component {
       />
     );
   };
-
   render() {
     if (this.state.loading) {
       return (
@@ -94,23 +118,50 @@ class staffList extends Component {
         </View>
       );
     }
+
+    
+  
+    
+  
     return (
-      <View style={{ flex: 1 }}>
+      //Returning the ListView
+      <View style={styles.MainContainer}>
         <FlatList
-          data={this.state.data}
-          renderItem={({ item }) => (
+          data={this.state.dataSource}
+          ItemSeparatorComponent={this.ListViewItemSeparator}
+          enableEmptySections={true}
+          keyExtractor={item => item.emailId}
+
+          renderItem={({item}) => (
             <ListItem
               title={`${item.firstName} ${item.lastName}`}
               subtitle={item.emailId}
+              
             />
           )}
-          keyExtractor={item => item.emailId}
+          refreshControl={
+            <RefreshControl
+              //refresh control used for the Pull to Refresh
+              refreshing={this.state.refreshing}
+              onRefresh={this.onRefresh.bind(this)}
+            />
+          }
           ItemSeparatorComponent={this.renderSeparator}
           ListHeaderComponent={this.renderHeader}
+
         />
       </View>
     );
   }
 }
-
-export default staffList;
+const styles = StyleSheet.create({
+  MainContainer: {
+    justifyContent: 'center',
+    flex: 1,
+    marginTop: 10,
+  },
+  rowViewContainer: {
+    fontSize: 20,
+    padding: 10,
+  },
+});

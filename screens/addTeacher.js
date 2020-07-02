@@ -182,47 +182,47 @@ export function ReviewForm({navigation}) {
   );
 }
 export default class App extends React.Component {
-  getDataUsingPost() {
-   // var password = this.state.otp
-    var url = "http://ec2-15-206-74-22.ap-south-1.compute.amazonaws.com:8080/swrmsdc/staff/createStaff/createdByStaff";
-//console.log(values);
-  //  var user = this.props.navigation.getParam('userName')
-    const requestBody = this.values;
-    // console.log(requestBody)
- var s='Bearer'+ global.token;
+//   getDataUsingPost() {
+//    // var password = this.state.otp
+//     var url = "http://ec2-15-206-74-22.ap-south-1.compute.amazonaws.com:8080/swrmsdc/staff/createStaff/createdByStaff";
+// //console.log(values);
+//   //  var user = this.props.navigation.getParam('userName')
+//     const requestBody = this.values;
+//     // console.log(requestBody)
+//  var s='Bearer'+ global.token;
 
-    fetch(url, {
-      // method: 'POST',
-      method: "POST",//Request Type 
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization':s
-      },
-      body: JSON.stringify(requestBody)
-      // },
-    })
-      .then((response) => response.json())
-      //If response is in json then in success
-      .then((responseJson) => {
+//     fetch(url, {
+//       // method: 'POST',
+//       method: "POST",//Request Type 
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json',
+//         'Authorization':s
+//       },
+//       body: JSON.stringify(requestBody)
+//       // },
+//     })
+//       .then((response) => response.json())
+//       //If response is in json then in success
+//       .then((responseJson) => {
 
-        // alert(JSON.stringify(responseJson));
-        // console.log(responseJson);
-        var res = responseJson
-      //  var token = res.data.jwString
-        // console.log(typeof (res.data.jwString))
-        if (res.status == 200) {
-          this.setState = { isLoading: false, }
+//         // alert(JSON.stringify(responseJson));
+//         // console.log(responseJson);
+//         var res = responseJson
+//       //  var token = res.data.jwString
+//         // console.log(typeof (res.data.jwString))
+//         if (res.status == 200) {
+//           this.setState = { isLoading: false, }
 
         
-console.log("response for add teacher"+res);
-//console.log(res.data.jwString);
-        // params: { sport: x },  this.props.navigation.navigate('Principal', res)
-        //var item=1;
-       // this.props.navigation.navigate('Principal',res );
-        }
-      })
-  }
+// console.log("response for add teacher"+res);
+// //console.log(res.data.jwString);
+//         // params: { sport: x },  this.props.navigation.navigate('Principal', res)
+//         //var item=1;
+//        // this.props.navigation.navigate('Principal',res );
+//         }
+//       })
+//   }
  render(){return(
  
  
@@ -238,7 +238,7 @@ console.log("response for add teacher"+res);
           // addReview(values);
           console.log(values);
          // this.getDataUsingPost();
-         var url = "http://ec2-52-12-91-65.us-west-2.compute.amazonaws.com:8080/swrmsdc/staff/createStaff/createdByStaff";
+         var url = "http://ec2-15-206-74-22.ap-south-1.compute.amazonaws.com:8080/swrmsdc/staff/createStaff/createdByStaff";
          //console.log(values);
            //  var user = this.props.navigation.getParam('userName')
              const requestBody = values;
@@ -263,7 +263,7 @@ console.log("response for add teacher"+res);
                .then((responseJson) => {
          
                  // alert(JSON.stringify(responseJson));
-                 // console.log(responseJson);
+                 console.log(responseJson);
                  var res = responseJson
                //  var token = res.data.jwString
                  // console.log(typeof (res.data.jwString))
